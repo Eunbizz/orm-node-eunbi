@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EMCAScript 2015 - 템플릿 문자열</title>
+    </head>
+
+    <body>
+        <h1>EMCAScript 2015 - 템플릿 문자열</h1>
+
+        <script>
+
+            const name = "김은비";
+            const age = 23;
+            let local = '인천';
+
+            // 전통적인 방식의 문장열과 변수값의 조합 방식
+            // 가독성이 떨어지고 코딩하는데 정신이 없다
+            let introduction = '제 이름은 '+name+'이고 나이는 '+age+'살이고 사는 곳은 '+local+' 입니다.';
+            console.log('전통적인 문자열과 변수의 조합:', introduction);
+
+            // ECMAScript 2015에서 추가된 신규문법 템플릿 문자열 방식으로 변수와 문자열을 조합하자
+            // 템플릿 문자열은 벡틱 문자열
+            let introduction2 = `제 이름은 ${name}이고 나이는 ${age}살이고 사는 곳은 ${local}입니다.`;
+            console.log('템플릿 문자열을 통한 문자열과 변수의 조합:', introduction);
+            900542070616
+        </script>
+    </body>
+</html>

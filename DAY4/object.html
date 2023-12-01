@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>자바스크립트 객체 정의/사용</title>
+    </head>
+
+    <body>
+        <h1>자바스크립트 객체 정의/사용</h1>
+        
+        <script>
+            var name = '김은비';
+            var age = 40;
+
+            // 자바스크립트 언어는 class를 지원하지만
+            // 손쉽게 객체를 만드는 방법으로 {}를 이용해 객체를 바로 정의해서 사용할 수 있다
+            // 사용자라는 객체를 정의
+            // 속성(property)는 특성을, 기능은 메소드와 함수로 정의
+
+            // 객체의 속성명과 해당 속성에 할당하는 변수명이 같으면 변수 생량 가능
+            var user = {
+                name,
+                age,
+                address: '인천광역시 연수구',
+                telephone: '010-7640-7278',
+                teach: function(){
+                    return 'teaching node.js now'
+                }
+            };
+
+            console.log('사용자 자바스크립트 객체 출력:', user);
+
+            let notebook = {
+                productId: '1',
+                productName: 'M1Pro',
+                price: 1000,
+                brand: 'Apple'
+            };
+            console.log('노트북 정보:', notebook);
+
+            notebook.price = 2000;
+            console.log('노트북 정보:', notebook);
+
+            // 객체의 동적 속성 생성 기능 활용하기
+            // 노트북의 재고량 속성을 동적속성정의 방식으로 신규 속성 추가
+            notebook['stock'] = 200;
+            console.log('노트북 정보:', notebook);
+
+            var asCenter = 'GangNam';
+            notebook[asCenter + '-역삼지점'] = 500;
+            
+            // 객체의 동적속성기능이 가장 파워풀하게 사용되는 경우
+            // 데이터의 구조를 동적으로 정의해서 사용해야할 때 유용(데이터기반의 리포팅 작성시)
+
+        </script>
+    </body>
+</html>
