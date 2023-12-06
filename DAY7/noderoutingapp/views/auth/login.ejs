@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>로그인 웹페이지</title>
+    </head>
+
+    <body>
+        <h1>로그인 페이지</h1>
+
+        <!-- form 태그의 목적은 사용자로부터 데이터를 입력받아 서버로 전송해주는 역할 제공
+        form 태그의 속성으로는 action, method가 있음 -->
+
+        <form action="/auth/login" method="post" onsubmit="return fnFormCheck();">
+
+            메일주소: <input type="text" name="email" id="email"/> <br/>
+
+            암호: <input type="password" name="password" id="password"/> <br/>
+
+            <input type="submit" vlaue="로그인"/>
+        </form>
+
+        <script>
+
+            // 폼 사용자 입력 값 유효성 검사 체크 함수
+            function fnFormCheck(){
+                if(document.getElementById('email').value == ''){
+                    alert('메일 주소를 입력해주세요. -.-');
+                    document.getElementById('email').focus();
+                    return false;
+                }
+                if(document.getElementById('password').value == ''){
+                    alert('암호를 입력해주세요. -.-');
+                    document.getElementById('password').focus();
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </body>
+</html>
