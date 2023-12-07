@@ -7,11 +7,11 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-// 개발자가 정의한 라우터 파일 참조
-var authRouter = require('./routes/auth');
+// 상품정보 관리 전용 RESTful API 라우팅 참조
+var productAPIRouter = require('./routes/productAPI');
 
-// 회원정보 처리 전용 라우터 파일 참조
-var memberRouter = require('./routes/member');
+// 상품 웹페이지에 대한 요청응답처리 라우팅 참조
+var productRouter = require('./routes/product');
 
 var app = express();
 
@@ -28,11 +28,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-// auth 라우터 파일의 기본 호출 주소 체계 정의
-app.use('/auth', authRouter);
+// productAPIRouter의 기본주소를 /api/product로 설정
+// 모든 RESTAPI 라우터의 최상위 기본주소는 되도록 /api/~로 시작되게 해주면 좋음
+app.use('/api/products', productAPIRouter);
 
-// member.js 라우터의 기본 주소 체계를 정의
-app.use('/member', memberRouter);
+app.use('/product', productRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
