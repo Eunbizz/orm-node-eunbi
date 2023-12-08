@@ -52,7 +52,7 @@
 
 **전통적인 자바스크립트 변수선언방식 var**
 
-```
+``` javascript 
 var userName = "이보람";
 var age = 40;
 var price = 5000;
@@ -84,7 +84,7 @@ var expression; `string text ${expression} string text` // 변수값 문자열
 function tag() { }; tag `string text ${expression} string text` // 함수 호출 아규먼트
 
 **es6 이전의 표기법**
-```
+``` javascript 
 var a = 30;
 var b = 3;
 var c = "자바스크립트";
@@ -94,7 +94,7 @@ console.log(str)    // 저는33살이고 자바스크립트를 배우고 있습�
 ```
 
 **템플릿 리터럴에서는 아래와 같이 $와 중괄호{}를 사용하여 표현식을 표기할 수 있습니다.**
-```
+``` javascript 
 let a1 = 30;
 let b1 = 3;
 let c1 = "자바스크립트";
@@ -111,7 +111,7 @@ console.log(str1);   // 저는33살이고 자바스크립트를 배우고 있습
 - 객체 = 현실세계에 존재하는 실체
 - 객체지향 프로그래밍은 일반화 시킨 개념인 클래스를 기반으로 프로그래밍하는 방식
 
-```
+``` javascript 
 var name = "이보람1";
 var age = 33;
 
@@ -140,7 +140,7 @@ console.log("사용자 자바스크립트 객체 출력 :",user);
 - order order = new Order(); 클래스를 이용해 객체를 생성 클래스를 통해서 객체를 생성하는 행위 (인스턴스 생성)
 - Order클래스를 통해서 새로운 실체인 order 객체를 생성
 
-```
+``` javascript 
 order.name = "",
 order.grade = "vip",
 order.address = "인천시 ...",
@@ -154,7 +154,7 @@ order.payment()
 - 배열이나 객체로부터 배열내 값이나 객체 속성들의 값을 빠르게 변수/상수에 할당 사용 가능
 - 구조화 되지 않은 형식으로 배열내의 값들이나 객체내의 속성 및 함수를 일괄 선언 및 값으로 할당가능
 
-```
+``` javascript 
 // 전통적인 구조화된(일반적인) 배열과 객체에서의 값을 추출하는 방법
 
 // 문자열 배열을 정의하고 값을 할당
@@ -166,7 +166,7 @@ var book2 = books[1];
 ```
 ### `Array Destructuring`
 
-```
+``` javascript 
 // 비구조화 할당 방식으로 상수를 선언하고 값을 할당
 const [book4, book5] = ['JAVA', 'C#', 'Python', 'PHP', 'JavaScript'];
 
@@ -178,7 +178,7 @@ const [book7, book8, book9, book10, book11, book12='데이터베이스'] = ['자
 
 ### `Object Destructuring`
 
-```
+``` javascript 
 // 객체의 비구조화 할당
 const techTrend = {
 	front: 'React',
@@ -203,7 +203,7 @@ const {front, backend, server, getAuthor} = {
 ---
 ## 5. 익명함수와 화살표 함수 사용법
 
-```
+``` javascript 
 // case1: 전통적인 자바스크립트 함수(기능) 정의 방식
 // 함수의 사용 목적 = 코드의 재사용
 // function 함수명(입력 파라미터=매개변수){처리 로직 구현 return 반환구문}
@@ -241,7 +241,7 @@ var plus3 = (a,b) => (a+b);
 - Makes declaration of object literals more concise and expressive.
 ### `Property Shorthand`
 
-```
+``` javascript 
 const a = 1, b = 2;
 const obj = { a, b }; // a concise expression of var obj = { a: a, b: b };
 console.log(obj); // { a: 1, b: 2 }
@@ -258,7 +258,7 @@ console.log(createPoint(10, 20)); // { x: 10, y: 20 }
 - Previously, defining methods in object literals required a function expression
 - This shorthand syntax can make object literals that act as simple interfaces or controllers much cleaner
 
-```
+``` javascript 
 const calculator = {
   operand1: 5,
   operand2: 10,
@@ -273,7 +273,7 @@ const calculator = {
 console.log(calculator.add());      // 15
 console.log(calculator.subtract()); // -5
 
-```
+``` 
 ---
 ## 7. Promises
 - An object representing the eventual completion or failure of an asynchronous operation.
@@ -281,7 +281,7 @@ console.log(calculator.subtract()); // -5
 - It is to simplify asynchronous code, avoiding the pitfalls of callbacks, such as callback hell and pyramid of doom.
 ### 1. `Simulating Data Fetching`
 
-```
+``` javascript 
 function fetchUserData(userId) {
   return new Promise((resolve, reject) => {
     console.log(`Fetching data for user ${userId}...`);
@@ -301,7 +301,7 @@ function fetchUserData(userId) {
 
 ### 2. `Processing the Fetched Data`
 
-```
+``` javascript 
 function processUserData(userData) {
   return new Promise((resolve, reject) => {
     console.log('Processing user data...');
@@ -318,7 +318,7 @@ function processUserData(userData) {
 
 ### 3. `Using the Functions with Promise Chaining`
 
-```
+``` javascript 
 fetchUserData(123)
   .then(userData => {
     return processUserData(userData);
@@ -344,7 +344,7 @@ fetchUserData(123)
 - The `extends` keyword is used in class declarations to create a class as a child of another class.
 - The `super` keyword is used to call the constructor of the parent class and to access the parent's methods.
 
-```
+``` javascript 
 class Animal {
   constructor(name) {
     this.name = name;
@@ -381,13 +381,13 @@ dog.speak();
 - Use export to expose modules, and import to bring them into other modules.
 ### `Exporting`
 
-```
+``` javascript 
 // In file math.js
 export const add = (a, b) => a + b;
 ```
 ### `Importing`
 
-```
+``` javascript 
 // In another file
 import { add } from './math.js';
 console.log(add(2, 3)); // 5
