@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Admin Account</title>
+    <!-- Add your stylesheets or other head content here -->
+</head>
+<body>
+
+    <h1>Modify Admin Account</h1>
+
+    <form action="/admin/modify/<%=adminId%>" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" >
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter new password">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+
+        <!-- Add more fields as needed for modification -->
+
+        <button type="submit">Save Changes</button>
+        <a href = '/admin/delete/<%=adminId%>'>삭제</a>
+        <a href = '/admin/list'>Admin Account list</a>
+    </form>
+
+</body>
+</html>

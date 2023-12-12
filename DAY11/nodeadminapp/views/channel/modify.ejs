@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Channel</title>
+    <!-- Add your stylesheets or other head content here -->
+</head>
+<body>
+
+    <h1>Modify Channel</h1>
+
+    <form action="/channel/modify/<%= channelId %>" method="POST">
+        <label for="name">Channel Name:</label>
+        <input type="text" id="name" name="name" >
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4"></textarea>
+
+        <!-- Add more fields as needed for modification -->
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+</body>
+</html>

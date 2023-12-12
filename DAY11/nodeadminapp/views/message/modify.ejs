@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Chatroom</title>
+    <!-- Add your stylesheets or other head content here -->
+</head>
+<body>
+
+    <h1>Modify Chatroom</h1>
+
+    <form action="/message/modify/<%= messageId %>" method="POST">
+        <label for="name">Chatroom Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4"></textarea>
+
+        <!-- Add more fields as needed for modification -->
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+</body>
+</html>

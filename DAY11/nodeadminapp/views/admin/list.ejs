@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Account List</title>
+    <!-- Add your stylesheets or other head content here -->
+</head>
+
+<body>
+
+    <h1>Admin Account List</h1>
+
+    <a href="/admin/create">
+        <button>New Account</button>
+    </a>
+
+    <a href="/admin/modify/1">
+        <button>Modify Account</button>
+    </a>
+
+    <!-- Display the list of admins in a table -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through your admin data and display each row -->
+            <% admins.forEach(admin => { %>
+                <tr>
+                    <td><%= admin.name %></td>
+                    <td><%= admin.email %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

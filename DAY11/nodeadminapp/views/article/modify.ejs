@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>게시글 정보 확인 및 수정/삭제</title>
+    </head>
+
+    <body>
+        <h1>기존 게시글 확인 및 수정 삭제</h1>
+
+        <form action="/article/modify" method="post">
+            제목: <input type="text" name="title"> <br/>
+            내용: <textarea name='contents' rows="20" cols="10" style="width:90%">
+            </textarea> <br/>
+            등록자: <input type="text" name="register"/> <br/>
+            <input type="submit" value="수정"/>
+            <a href = '/article/delete'>삭제</a>
+            <a href = '/article/list'>게시글 목록 이동</a>
+        </form>
+
+
+       
+    </body>
+</html>
