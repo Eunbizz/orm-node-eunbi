@@ -40,7 +40,7 @@ router.post('/entry', async(req, res)=>{
     password
   };
 
-  res.redirect('/login.ejs')
+  res.redirect('/login')
 });
 
 // 암호 찾기 웹페이지 요청 및 응답

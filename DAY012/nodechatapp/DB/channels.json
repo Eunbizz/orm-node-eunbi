@@ -1,0 +1,18 @@
+[
+    {
+        "channel_id": 1,
+        "name": "General Chat",
+        "img_path": "/images/channel_general.png",
+        "state_code": 1,
+        "reg_date": "2022-01-01",
+        "edit_date": "2022-01-02"
+    },
+    {
+        "channel_id": 2,
+        "name": "Tech Talk",
+        "img_path": "/images/channel_tech.png",
+        "state_code": 1,
+        "reg_date": "2022-02-02",
+        "edit_date": "2022-02-03"
+    }
+]

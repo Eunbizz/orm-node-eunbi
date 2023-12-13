@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Entry</title>
+        <link rel="stylesheet" href="/styles/login.css">
     </head>
 
     <body>
@@ -9,19 +10,19 @@
             <h1>Entry</h1>
             <form action='/entry' method='POST'>
                 <div class="int-area">
-                    <input type="text" name="id" id="id">
+                    <input type="text" name="id" id="id" autocomplete="off" required>
                     <label for="id">USER NAME</label>
                 </div>
                 <div class="int-area">
-                    <input type="text" name="email" id="email">
+                    <input type="text" name="email" id="email" autocomplete="off" required>
                     <label for="email">USER EMAIL</label>
                 </div>
                 <div class="int-area">
-                    <input type="password" name="pw" id="pw">
+                    <input type="password" name="pw" id="pw" autocomplete="off" required>
                     <label for="pw">PASSWORD</label>
                 </div>
                 <div class="btn-area">
-                    <button id="btn" type="submit">LOGIN</button>
+                    <button id="btn" type="submit">ENTRY</button>
                 </div>
             </form>
         </section>

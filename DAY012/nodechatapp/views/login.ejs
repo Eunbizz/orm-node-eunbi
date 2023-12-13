@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Login</title>
+        <link rel="stylesheet" href="/styles/login.css">
+        <script src="../lib/jquery-3.6.0.min.js"></script>
     </head>
 
     <body>
@@ -9,17 +11,45 @@
             <h1>Login</h1>
             <form action='/login' method='POST'>
                 <div class="int-area">
-                    <input type="text" name="email" id="email">
+                    <input type="text" name="email" id="email" autocomplete="off" required>
                     <label for="email">USER EMAIL</label>
                 </div>
                 <div class="int-area">
-                    <input type="password" name="pw" id="pw">
+                    <input type="password" name="pw" id="pw" autocomplete="off" required>
                     <label for="pw">PASSWORD</label>
                 </div>
                 <div class="btn-area">
                     <button id="btn" type="submit">LOGIN</button>
                 </div>
+            <form>
+                <div class="caption">
+                    <a href="/find">Forgot Password?</a>
+                    <a href="/entry">Entry</a>
+                </div>
+
+            </form>
             </form>
         </section>
+
+        <script>
+            let email = $('#email');
+            let pw = $('#pw');
+        let btn = $('#btn');
+        
+        $(btn).on('click', function() {
+            if($(email).val() == "") {
+                $(email).next('label').addClass('warning');
+                setTimeout(function() {
+                    $('label').removeClass('warning');
+                }, 1500);
+            }
+            else if($(pw).val() == "") {
+                $(pw).next('label').addClass('warning');
+                setTimeout(function() {
+                    $('label').removeClass('warning');
+                }, 1500);
+            }
+        });
+        </script>
     </body>
 </html>

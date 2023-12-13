@@ -1,0 +1,18 @@
+[
+    {
+        "message_id": 1,
+        "channel_id": 1,
+        "member_id": 1,
+        "nick_name": "User One",
+        "message": "Hello everyone in General Chat!",
+        "msg_date": "2022-01-01 09:00:00"
+    },
+    {
+        "message_id": 2,
+        "channel_id": 2,
+        "member_id": 2,
+        "nick_name": "User Two",
+        "message": "Tech Talk is the best place to talk tech!",
+        "msg_date": "2022-02-02 10:00:00"
+    }
+]
