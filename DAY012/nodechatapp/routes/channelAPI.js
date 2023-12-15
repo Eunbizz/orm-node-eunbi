@@ -35,7 +35,7 @@ router.post('/create', async(req, res)=>{
 
     res.json(channel);
 });
-
+``
 // Modify an existing channel
 router.post('/modify', async(req, res) =>{
     // Logic to modify an existing channel
