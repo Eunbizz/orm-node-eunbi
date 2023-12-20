@@ -1,0 +1,28 @@
+[
+    {
+        "channel_id": 1,
+        "community_id": 1,
+        "channel_name": "General Chat",
+        "user_limit": 100,
+        "channel_img_path": "/images/channel_general.png",
+        "channel_desc": "1",
+        "channel_state_code": 1,
+        "reg_date": "2022-01-01",
+        "reg_member_id": 1,
+        "edit_date": "2022-01-02",
+        "edit_member_id": 1
+    },
+    {
+        "channel_id": 2,
+        "community_id": 2,
+        "channel_name": "General Chat",
+        "user_limit": 200,
+        "channel_img_path": "/images/channel_general.png",
+        "channel_desc": "2",
+        "channel_state_code": 2,
+        "reg_date": "2022-01-01",
+        "reg_member_id": 2,
+        "edit_date": "2022-01-02",
+        "edit_member_id": 2
+    }
+]
