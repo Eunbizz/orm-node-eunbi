@@ -1,6 +1,6 @@
 
 					<div class="login-wrapper">
-						<form action="/chat">
+						<form action="/entry" method="post" id="entryForm">
 							<div class="login-screen">
 								<div class="login-body">
 									<a href="/chat" class="login-logo">
@@ -8,15 +8,15 @@
 									</a>
 									<h6>Welcome to Quick Chat App,<br>Create your account.</h6>
 									<div class="field-wrapper">
-										<input type="email" autofocus>
+										<input type="email" name="email" id="email" autofocus>
 										<div class="field-placeholder">Email ID</div>
 									</div>
 									<div class="field-wrapper">
-										<input type="password">
+										<input type="password" name="password" id="password">
 										<div class="field-placeholder">Password</div>
 									</div>
 									<div class="field-wrapper mb-3">
-										<input type="password">
+										<input type="password" id="confirmPassword">
 										<div class="field-placeholder">Confirm Password</div>
 									</div>
 									<div class="actions">
@@ -30,3 +30,36 @@
 						</form>
 					</div>
 
+
+<script>
+	$(document).ready(function(){
+
+	});
+
+	$("#entryForm").submit(function(){
+		if($("#email").val()==""){
+			alert("메일주소를 입력해주세요.");
+			$("#email").focus();
+			return false
+		}
+		if($("#password").val()==""){
+			alert("암호를 입력해주세요.");
+			$("#password").focus();
+			return false
+		}
+		if($("#confirmPassword").val()==""){
+			alert("암호 재확인 값을 입력해주세요.");
+			$("#confirmPassword").focus();
+			return false
+		}
+		if($("#password").val()!=$("#confirmPassword").val()){
+			alert("암호값이 일치하지 않습니다.");
+			$("#password").val("");
+			$("#confirmPassword").val("");
+			$("#password").focus();
+			return false
+		}
+	})
+
+
+</script>

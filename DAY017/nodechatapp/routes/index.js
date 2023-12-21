@@ -32,14 +32,18 @@ router.get('/entry', async(req, res)=>{
 
 // 회원가입 처리 요청 및 응답, 회원가입 완료 후 로그인 페이지 이동
 router.post('/entry', async(req, res)=>{
+
+  // step1: 회원가입페이지에서 사용자가 입력한 회원정보 추출
   var email = req.body.email;
   var password = req.body.password;
 
+  // step2: db 신규 회원 등록 처리
   user = {
     email,
     password
   };
 
+  // 등록완료시 로그인 페이지로 이동시키기
   res.redirect('/login')
 });
 

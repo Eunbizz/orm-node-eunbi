@@ -7,6 +7,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var channelRouter = require('./routes/channel');
+
+// RESTful 데이터 요청과 응답처리 전용 라우팅
 var memberAPIRouter = require('./routes/memberAPI');
 var channelAPIRouter = require('./routes/channelAPI');
 
@@ -38,11 +40,6 @@ app.use('/users', usersRouter);
 app.use('/chat', channelRouter);
 app.use('/api/member', memberAPIRouter);
 app.use('/api/channel', channelAPIRouter);
-
-
-
-
-
 
 
 // catch 404 and forward to error handler
