@@ -1,43 +1,29 @@
-'use strict';
-
-const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-const process = require('process');
-const basename = path.basename(__filename);
+
+//개발모드 환경설정
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+//DB연결 환경설정정보 변경처리//관련정보 수정
+const config = require(path.join(__dirname,'..','config','config.json'))[env];
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (
-      file.indexOf('.') !== 0 &&
-      file !== basename &&
-      file.slice(-3) === '.js' &&
-      file.indexOf('.test.js') === -1
-    );
-  })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
+//데이터 베이스 객체
+const db= {};
 
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+//DB연결정보로 시퀄라이즈 ORM 객체 생성
+// sequelize = db 서버와 연결할 수 있는 정보를 가지고 있음(객체)
+// Sequelize = orm 프레임워크 클래스
+const sequelize = new Sequelize(config.database,config.username,config.password,config);
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+//DB 처리 객체에 시퀄라이즈 정보 맵핑처리
+//이후 DB객체를 통해 데이터 관리가능해짐
+// db 객체에 속성을 만듬
+db.sequelize = sequelize; //DB연결정보를 포함한 DB제어 객체속성(CRUD)
+db.Sequelize = Sequelize; //Sequelize팩키지에서 제공하는 각종 데이터 타입 및 관련 객체정보를 제공함
 
+
+//회원모델 모듈파일 참조하고 db속성정의하기
+db.Member = require('./member.js')(sequelize,Sequelize);
+
+//db객체 외부로 노출하기 
 module.exports = db;
