@@ -1,0 +1,105 @@
+
+            <!--우측 콘텐츠 헤더영역 -->
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>신규 채널 등록</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="/Home/Index">Home</a> > 
+                        </li>
+                        <li>
+                            <a> 신규 채널</a> > 
+                        </li>
+                        <li class="active">
+                            <strong> 등록</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <!--우측 콘텐츠 영역 -->
+            <form action="/channel/create" id='articleForm' method="post">
+                <div class="wrapper wrapper-content">
+                    <div class="ibox-content m-b-sm border-bottom">
+
+                        <!-- 게시판 영역 -->
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <label class="control-label">채널</label>
+                                    <select name="channelId" id="channelId" class="form-control">
+                                        <option value="0">선택</option>
+                                        <option value="1">공지채널</option>
+                                        <option value="2">잡담채널</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 글 제목 영역 -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label">채널이름</label>
+                                    <input type="text" name="title" id="title" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 글 내용 입력 영역 -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label">채널설명</label>
+                                    <textarea class="form-control" name='contents' id='contents' rows="10" cols="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 게시글 유형, 게시 여부, 등록자 입력 영역 -->
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label">동시채널접속자수</label>
+                                    <input type="text" name="userLimit" id="userLimit" class="form-control">
+
+                                    </select>
+                                </div>
+                            </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">게시여부</label>
+                                        <select name="isDisplayCode" id="isDisplayCode" class="form-control">
+                                            <option value="9">선택</option>
+                                            <option value="1">게시함</option>
+                                            <option value="0">게시안함</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="control-label">등록아이디</label>
+                                        <input type="text" name="register" id="register" class="form-control">
+                                    </div>
+                                </div>
+                        </div>
+
+                        <!-- 저장/목록 이동 버튼 -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">저장</button>
+                            <a href="/channel/list" class="btn btn-info">목록</a>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+
+
+
+    <script>
+
+
+    </script>
+
