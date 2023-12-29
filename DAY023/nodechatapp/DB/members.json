@@ -1,0 +1,32 @@
+[
+    {
+        "member_id": 1,
+        "email": "user1@example.com",
+        "member_password": "1020",
+        "name": "User one",
+        "profile_img_path": "/images/profile1.png",
+        "telephone": "010-7640-7278",
+        "entry_type_code": 1,
+        "use_state_code": 1,
+        "birth_date": "1990-01-01",
+        "reg_date": "2022-01-02",
+        "reg_member_id": 1,
+        "edit_date": "2022-01-02",
+        "edit_member_id": 1
+    },
+    {
+        "member_id": 2,
+        "email": "user1@example.com",
+        "member_password": "1020",
+        "name": "User two",
+        "profile_img_path": "/images/profile2.png",
+        "telephone": "010-7640-7278",
+        "entry_type_code": 2,
+        "use_state_code": 2,
+        "birth_date": "1990-01-01",
+        "reg_date": "2022-01-02",
+        "reg_member_id": 2,
+        "edit_date": "2022-01-02",
+        "edit_member_id": 2
+    }
+]

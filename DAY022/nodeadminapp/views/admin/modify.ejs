@@ -1,14 +1,15 @@
 
+
             <!--우측 콘텐츠 헤더영역 -->
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>사용자 정보 관리</h2>
+                    <h2>관리자 정보 관리</h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="/">Home ></a>
                         </li>
                         <li>
-                            <a>사용자 정보 관리 ></a>
+                            <a>관리자 정보 관리 ></a>
                         </li>
                         <li class="active">
                             <strong>확인/수정</strong>
@@ -21,7 +22,7 @@
             </div>
 
             <!--우측 콘텐츠 영역 -->
-            <form action="/member/modify/<%=admin.admin_id%>" method="post">
+            <form action="/admin/modify/<%=admin.admin_member_id%>" method="post">
                 <div class="wrapper wrapper-content">
                     <div class="ibox-content m-b-sm border-bottom">
 
@@ -29,21 +30,21 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label">메일주소</label>
-                                    <input type="text" name="email" class="form-control">
+                                    <label class="control-label">소속회사코드</label>
+                                    <input type="text" name="companyCode" class="form-control" value="<%=admin.company_code%>">
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label">비밀번호</label>
-                                    <input type="password" name="password" class="form-control">
+                                    <label class="control-label">부서명</label>
+                                    <input type="text" name="deptName" class="form-control" value="<%=admin.dept_name%>">
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label">이름</label>
-                                    <input type="text" name="name" class="form-control">
+                                    <label class="control-label">관리자이름</label>
+                                    <input type="text" name="adminName" class="form-control" value="<%=admin.admin_name%>">
                                 </div>
                             </div>
 
@@ -53,69 +54,40 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label">사진 업로드</label>
-                                    <input type="file" name="file" class="form-control">
+                                    <label class="control-label">관리자메일주소</label>
+                                    <input type="text" name="email" class="form-control" value="<%=admin.email%>">
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label">전화번호</label>
-                                    <input type="text" name="telephone" class="form-control">
+                                    <label class="control-label">관리자비밀번호</label>
+                                    <input type="password" name="adminPassword" class="form-control" value="<%=admin.admin_password%>">
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label class="control-label">생년월일</label>
-                                    <input type="text" name="birthday" class="form-control">
+                                    <label class="control-label">관리자전화번호</label>
+                                    <input type="telephone" name="telephone" class="form-control" value="<%=admin.telephone%>">
+                                    </select>
                                 </div>
                             </div>
 
                         </div>
 
-
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="control-label">회원가입유형</label>
-                                    <select name="entryTypeCode" class="form-control">
-                                        <option value="0">직접가입</option>
-                                        <option value="1">SNS-Facebook</option>
-                                        <option value="2">SNS-Google</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="control-label">가입상태정보</label>
-                                    <select name="entryStateCode" class="form-control">
-                                        <option value="0">일시중지</option>
-                                        <option value="1">사용중</option>
-                                        <option value="2">탈퇴상태</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label class="control-label">가입일시</label>
-                                    <input type="text" class="form-control" value="2022-12-19" readonly>
-                                </div>
-                            </div>
-
-                        </div>
-                        
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">저장</button>
-                            <a href="/member/list" class="btn btn-info">목록</a>
+                            <button type="submit" class="btn btn-primary">수정</button>
+                            <!-- btn-danger: 빨간색 버튼 -->
+                            <button type="button" id="btnDelete" class="btn btn-danger">삭제</button>
+                            <a href="/admin/list" class="btn btn-info">목록</a>
                         </div>
 
                     </div>
                 </div>
             </form>
 
- 
+
     <script>
 
     </script>

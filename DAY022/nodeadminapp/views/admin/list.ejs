@@ -2,13 +2,13 @@
             <!--우측 상단 헤더 영역 -->
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>사용자 정보 관리</h2>
+                    <h2>관리자 정보 관리</h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="/">Home ></a>
                         </li>
                         <li>
-                            <a>사용자 정보 관리 ></a>
+                            <a>관리자 정보 관리 ></a>
                         </li>
                         <li class="active">
                             <strong>조회</strong>
@@ -36,7 +36,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="control-label" for="OrderName">이름</label>
-                                    <input type="text" name="name" class="form-control">
+                                    <input type="text" name="adminName" class="form-control">
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -75,9 +75,9 @@
                                         <tbody class="hoverTblBody">
                                             <% for(var i =0;i<admin.length;i++){ %>
                                                 <tr>
-                                                    <td><%=admin[i].admin_member_id%></td>
+                                                    <td><a href="/admin/modify/<%=admin[i].admin_member_id%>"><%=admin[i].admin_member_id%></a></td>
                                                     <td><%=admin[i].email%></td>
-                                                    <td><a href="/admin/modify/<%=admin[i].admin_member_id%>"><%=admin[i].name%></a></td>
+                                                    <td><%=admin[i].admin_name%></td>
                                                     <td><%=admin[i].telephone%></td>
                                                     <td><%=admin[i].dept_name%></td>
                                                     <td>

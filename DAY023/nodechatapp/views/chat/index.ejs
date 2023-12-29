@@ -1,0 +1,587 @@
+<div class="main-container">
+  <!-- Empty chat screen start -->
+  <div class="empty-chat-screen">
+    <!-- Option to display logged in user avatar -->
+    <!--
+						<img src="img/user2.png" class="my-avatar" alt="My Avatar">
+						<h5>Hey, <span>Katherine</span></h5>
+						<h6>Welcome to Quick Chat App</h6>
+						<p>Please select a chat to start messaging.</p>
+					-->
+
+    <!-- Display Image -->
+    <img
+      src="img/empty-chat-display.svg"
+      class="empty-chat-display"
+      alt="My Avatar"
+    />
+    <p>Please select a chat to start messaging.</p>
+
+    <a href="#" class="btn btn-primary lets-chat-mobile-view">Lets Chat</a>
+  </div>
+  <!-- Empty chat screen end -->
+
+  <!-- Content wrapper start -->
+  <div class="chat-content-wrapper d-none">
+    <!-- Active User Chatting Start -->
+    <div class="active-user-chatting">
+      <div class="active-user-info">
+        <div class="toggle-sidebar" id="toggle-sidebar">
+          <span class="toggle-icon"></span>
+        </div>
+        <div class="bg-chat-avatar pink">MK</div>
+        <div class="avatar-info">
+          <h5>Markus Kyle</h5>
+          <div class="typing">Typing ...</div>
+        </div>
+      </div>
+      <div class="chat-actions">
+        <a href="#" data-toggle="modal" data-target="#videoCall">
+          <img src="img/icon-video-call.svg" alt="Video Call" />
+        </a>
+        <a href="#" data-toggle="modal" data-target="#audioCall">
+          <img src="img/icon-call.svg" alt="Call" />
+        </a>
+      </div>
+    </div>
+    <!-- Active User Chatting End -->
+
+    <!-- Chat Container Start -->
+    <div class="chat-container">
+      <div class="chatContainerScroll">
+        <ul class="chat-box">
+          <li class="chat-left">
+            <div class="chat-avatar">
+              <img src="img/user21.png" alt="Quick Chat Admin" />
+              <div class="chat-name">Kyle</div>
+            </div>
+            <div class="chat-text-wrapper">
+              <div class="chat-text">
+                <p>Hello, good morning.</p>
+                <div class="chat-hour read">08:55 <span>&#10003;</span></div>
+              </div>
+            </div>
+          </li>
+          <li class="chat-right">
+            <div class="chat-text-wrapper">
+              <div class="chat-text">
+                <p>
+                  Hi Kyle<br />
+                  Good morning 😃. How are you?
+                </p>
+                <div class="chat-hour read">08:56 <span>&#10003;</span></div>
+              </div>
+            </div>
+            <div class="chat-avatar">
+              <img src="img/user24.png" alt="Quick Chat Admin" />
+              <div class="chat-name">Amy</div>
+            </div>
+          </li>
+          <li class="divider">Feb 18, 2021</li>
+          <li class="chat-left">
+            <div class="chat-avatar">
+              <img src="img/user21.png" alt="Quick Chat Admin" />
+              <div class="chat-name">Kyle</div>
+            </div>
+            <div class="chat-text-wrapper">
+              <div class="chat-text">
+                <p>Are we meeting today 😊😊</p>
+                <div class="chat-hour read">08:57 <span>&#10003;</span></div>
+              </div>
+            </div>
+          </li>
+          <li class="chat-right">
+            <div class="chat-text-wrapper">
+              <div class="chat-text">
+                <p>Well, that's great 😃</p>
+                <div class="chat-hour read">08:59 <span>&#10003;</span></div>
+              </div>
+              <div class="chat-text">
+                <div class="shared-files">
+                  <a href="#" class="shared-files">
+                    <div class="attached-folder">
+                      <img src="img/folder.svg" alt="Folder" />
+                    </div>
+                    <div class="attached-link">new-design.zip</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="chat-avatar">
+              <img src="img/user24.png" alt="Quick Chat Admin" />
+              <div class="chat-name">Amy</div>
+            </div>
+          </li>
+          <li class="divider">Feb 21, 2021</li>
+          <li class="chat-left">
+            <div class="chat-avatar">
+              <img src="img/user21.png" alt="Quick Chat Admin" />
+              <div class="chat-name">Kyle</div>
+            </div>
+            <div class="chat-text-wrapper">
+              <div class="chat-text">
+                <p>
+                  The rest of the team is not here yet.<br />Maybe in an hour or
+                  so?
+                </p>
+                <div class="chat-hour read">08:57 <span>&#10003;</span></div>
+              </div>
+            </div>
+          </li>
+          <li class="chat-right">
+            <div class="chat-text-wrapper">
+              <div class="chat-text">
+                <p>
+                  Have you faced any problems at the last phase of the project?
+                </p>
+                <div class="chat-hour read">08:59 <span>&#10003;</span></div>
+              </div>
+              <div class="chat-text">
+                <p>Lets discuss.</p>
+                <div class="chat-hour read">09:00 <span>&#10003;</span></div>
+              </div>
+            </div>
+            <div class="chat-avatar">
+              <img src="img/user24.png" alt="Quick Chat Admin" />
+              <div class="chat-name">Amy</div>
+            </div>
+          </li>
+          <li class="divider">Feb 25, 2021</li>
+          <li class="chat-left">
+            <div class="chat-avatar">
+              <img src="img/user21.png" alt="Quick Chat Admin" />
+              <div class="chat-name">Kyle</div>
+            </div>
+            <div class="chat-text-wrapper">
+              <div class="chat-text">
+                <p>
+                  Actually everything was fine.<br />I'm very excited to show
+                  this to our team.
+                </p>
+                <div class="chat-hour read">07:00 <span>&#10003;</span></div>
+              </div>
+            </div>
+          </li>
+          <li class="chat-right">
+            <div class="chat-text-wrapper">
+              <div class="chat-text">
+                <p>
+                  From next week I am going to work on new and exiting project.
+                </p>
+                <div class="chat-hour read">07:01 <span>&#10003;</span></div>
+              </div>
+            </div>
+            <div class="chat-avatar">
+              <img src="img/user24.png" alt="Quick Chat Admin" />
+              <div class="chat-name">Amy</div>
+            </div>
+          </li>
+          <li class="chat-left">
+            <div class="chat-avatar">
+              <img src="img/user21.png" alt="Quick Chat Admin" />
+              <div class="chat-name">Kyle</div>
+            </div>
+            <div class="chat-text-wrapper">
+              <div class="chat-text">
+                <div class="chat-img-thumbnail">
+                  <img
+                    src="img/img1.jpeg"
+                    class="img-fluid chat-thumbnail"
+                    alt="Quick Chat Admin"
+                  />
+                  <a href="#" class="download">
+                    <img src="img/download.svg" alt="Download" />
+                  </a>
+                </div>
+                <div class="chat-hour">07:02 <span>&#10003;</span></div>
+              </div>
+              <div class="chat-text">
+                <p>Great. Thanks 😊😊</p>
+                <div class="chat-hour">07:03 <span>&#10003;</span></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Chat Container End -->
+
+    <!-- Chat form start -->
+    <div class="chat-form">
+      <div class="form-group">
+        <textarea
+          class="form-control"
+          placeholder="Type your message here..."
+        ></textarea>
+      </div>
+      <div class="chat-form-actions">
+        <a href="#" class="action-icon">
+          <img src="img/emoji.svg" alt="Emoji" />
+          <div class="action-icon-popup">
+            <div class="emoji-list">
+              <span>&#128522;</span>
+              <span>&#128525;</span>
+              <span>&#128514;</span>
+              <span>&#128557;</span>
+              <span>&#128530;</span>
+              <span>&#128536;</span>
+              <span>&#128553;</span>
+              <span>&#128532;</span>
+              <span>&#128527;</span>
+              <span>&#128513;</span>
+              <span>&#128521;</span>
+              <span>&#128524;</span>
+              <span>&#128563;</span>
+              <span>&#128526;</span>
+              <span>&#128546;</span>
+              <span>&#128564;</span>
+              <span>&#128516;</span>
+              <span>&#128529;</span>
+              <span>&#128533;</span>
+              <span>&#128523;</span>
+              <span>&#128528;</span>
+              <span>&#128554;</span>
+              <span>&#128545;</span>
+              <span>&#128074;</span>
+              <span>&#128515;</span>
+              <span>&#128548;</span>
+              <span>&#128567;</span>
+              <span>&#128538;</span>
+              <span>&#128516;</span>
+              <span>&#128543;</span>
+              <span>&#128537;</span>
+              <span>&#128077;</span>
+              <span>&#128078;</span>
+              <span>&#128076;</span>
+              <span>&#128591;</span>
+            </div>
+          </div>
+        </a>
+        <a
+          href="#"
+          class="action-icon"
+          data-toggle="modal"
+          data-target="#attachFile"
+        >
+          <img src="img/attach.svg" alt="Attachment" />
+          <span class="action-icon-tooltip">Attach</span>
+        </a>
+      </div>
+      <button class="btn btn-primary">
+        <img src="img/send1.svg" alt="Send" />
+      </button>
+    </div>
+    <!-- Chat form end -->
+  </div>
+  <!-- Content wrapper end -->
+
+  <!-- Audio Call Modal -->
+  <div
+    class="modal fade"
+    id="audioCall"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="audioCallLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="call-container">
+            <div class="current-user">
+              <img src="img/user7.png" alt="Avatar" />
+            </div>
+            <h5 class="calling-user-name">
+              Kia Marrison <span class="calling">Calling...</span>
+            </h5>
+            <div class="calling-btns">
+              <button class="btn btn-danger" data-dismiss="modal">
+                <img src="img/icon-close.svg" alt="Reject Call" />
+              </button>
+              <button class="btn btn-success">
+                <img src="img/icon-calling.svg" alt="Calling" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Call Modal -->
+  <div
+    class="modal fade"
+    id="videoCall"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="videoCallLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="call-container">
+            <div class="current-user">
+              <img src="img/user20.png" alt="Avatar" />
+            </div>
+            <h5 class="calling-user-name">
+              Amy Marrison <span class="calling">Calling...</span>
+            </h5>
+            <div class="calling-btns">
+              <button class="btn btn-danger" data-dismiss="modal">
+                <img src="img/icon-close.svg" alt="Reject Call" />
+              </button>
+              <button class="btn btn-success">
+                <img src="img/icon-video-call-white.svg" alt="Video Call" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Group Modal -->
+  <div
+    class="modal fade"
+    id="createGroup"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="createGroupLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create Group</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Upload profile start -->
+          <div class="upload-profile">
+            <div class="upload-profile-image">
+              <img src="img/group4.svg" alt="Group Image" />
+            </div>
+            <div class="field-wrapper">
+              <div class="custom-file">
+                <input
+                  type="file"
+                  class="custom-file-input"
+                  id="uploadProfile"
+                />
+                <label class="custom-file-label" for="uploadProfile"
+                  >Group image</label
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Upload profile end -->
+
+          <div class="field-wrapper">
+            <input type="text" placeholder="Enter Group Name" />
+            <div class="field-placeholder">Group Name</div>
+          </div>
+
+          <div class="field-wrapper-group">
+            <div class="field-wrapper">
+              <input type="email" placeholder="Enter Email ID" />
+              <div class="field-placeholder">Add User</div>
+            </div>
+            <button class="btn btn-secondary">Add</button>
+          </div>
+
+          <div class="stacked-users-group">
+            <div class="stacked-user">
+              <img src="img/user21.png" alt="User" />
+              <span class="delete-user">
+                <img src="img/close.svg" alt="Remove User" />
+              </span>
+            </div>
+            <div class="stacked-user">
+              <img src="img/user15.png" alt="User" />
+              <span class="delete-user">
+                <img src="img/close.svg" alt="Remove User" />
+              </span>
+            </div>
+            <div class="stacked-user">
+              <img src="img/user6.png" alt="User" />
+              <span class="delete-user">
+                <img src="img/close.svg" alt="Remove User" />
+              </span>
+            </div>
+            <div class="stacked-user">
+              <img src="img/user24.png" alt="User" />
+              <span class="delete-user">
+                <img src="img/close.svg" alt="Remove User" />
+              </span>
+            </div>
+            <div class="stacked-user">
+              <img src="img/user13.png" alt="User" />
+              <span class="delete-user">
+                <img src="img/close.svg" alt="Remove User" />
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <button class="btn btn-primary btn-block">Create Group</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Group Modal -->
+  <div
+    class="modal fade"
+    id="editGroup"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="editGroupLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Group</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Upload profile start -->
+          <div class="upload-profile">
+            <div class="upload-profile-image">
+              <img src="img/group4.svg" alt="Group Image" />
+            </div>
+            <div class="field-wrapper">
+              <div class="custom-file">
+                <input
+                  type="file"
+                  class="custom-file-input"
+                  id="uploadProfile"
+                />
+                <label class="custom-file-label" for="uploadProfile"
+                  >Group image</label
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Upload profile end -->
+
+          <div class="field-wrapper">
+            <input type="text" value="Avengers" />
+            <div class="field-placeholder">Edit Group Name</div>
+          </div>
+
+          <div class="field-wrapper-group">
+            <div class="field-wrapper">
+              <input type="email" placeholder="Enter Email ID" />
+              <div class="field-placeholder">Add User</div>
+            </div>
+            <button class="btn btn-primary">Add</button>
+          </div>
+
+          <div class="stacked-users-group">
+            <div class="stacked-user">
+              <img src="img/user2.png" alt="User" />
+              <span class="delete-user">
+                <img src="img/close.svg" alt="Remove User" />
+              </span>
+            </div>
+            <div class="stacked-user">
+              <img src="img/user5.png" alt="User" />
+              <span class="delete-user">
+                <img src="img/close.svg" alt="Remove User" />
+              </span>
+            </div>
+            <div class="stacked-user">
+              <img src="img/user6.png" alt="User" />
+              <span class="delete-user">
+                <img src="img/close.svg" alt="Remove User" />
+              </span>
+            </div>
+            <div class="stacked-user">
+              <img src="img/user7.png" alt="User" />
+              <span class="delete-user">
+                <img src="img/close.svg" alt="Remove User" />
+              </span>
+            </div>
+            <div class="stacked-user">
+              <img src="img/user8.png" alt="User" />
+              <span class="delete-user">
+                <img src="img/close.svg" alt="Remove User" />
+              </span>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <button class="btn btn-primary btn-block">Update Group</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Attach File Modal -->
+  <div
+    class="modal fade"
+    id="attachFile"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="attachFileLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Attach File</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Attach file start -->
+          <div class="upload-profile">
+            <div class="upload-profile-image">
+              <img src="img/group4.svg" alt="Attached Image" />
+            </div>
+            <div class="field-wrapper">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="attachImage" />
+                <label class="custom-file-label" for="attachImage"
+                  >Attach File</label
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Attach file end -->
+
+          <div class="mt-3 text-right">
+            <button class="btn btn-secondary" data-dismiss="modal">
+              Cancel
+            </button>
+            <button class="btn btn-primary">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

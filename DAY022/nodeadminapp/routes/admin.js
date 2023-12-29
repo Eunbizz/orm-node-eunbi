@@ -12,28 +12,42 @@ var Op = db.Sequelize.Op;
 
 router.get('/list', async (req, res, next) => {
   
-  var admin = db.Admin.findAll(
+  var admin = await db.Admin.findAll(
     {
       attributes: ['admin_member_id', 'email', 'admin_name', 'telephone', 'dept_name', 'used_yn_code', 'reg_date']
     }
-  )
+  );
 
-  res.render('admin/list.ejs', { admin });
+  res.render('admin/list.ejs', {admin});
 });
 
-// searchOption -ing
-// router.post('/list', async(req, res)=>{
-//   // step1: 사용자가 선택/입력한 조회옵션 데이터 추출
-//   var email = req.body.email;
-//   var admin_name = req.body.admin_name;
-//   var telephone = req.body.telephone;
+router.post('/list', async(req, res)=>{
+  // step1: 사용자가 선택/입력한 조회옵션 데이터 추출
+  var email = req.body.email;
+  var adminName = req.body.adminName;
+  var telephone = req.body.telephone;
 
-//   var searchOption = {
-//     email, 
-//     admin_name,
-//     telephone
-//     };
-// })
+  var searchOption = {
+    email, 
+    admin_name:adminName,
+    telephone
+    };
+  
+  var whereClause = {};
+
+  if (searchOption.email) {
+    whereClause.email = searchOption.email;
+  }
+  if (searchOption.admin_name) {
+    whereClause.admin_name = searchOption.admin_name;
+  }
+  if (searchOption.telephone) {
+    whereClause.telephone = searchOption.telephone;
+  }
+
+  var admin = await db.Admin.findAll({where: whereClause});
+
+  res.render('admin/list.ejs', {admin, searchOption});})
 
 
 router.get('/create', async(req, res)=>{
@@ -45,7 +59,6 @@ router.post('/create', async(req, res)=>{
 
   // step1: 사용자가 입력한 게시글 등록 데이터 추출
   var companyCode = req.body.companyCode;
-  var adminId = req.body.adminId;
   var adminPassword = req.body.adminPassword;
   var email = req.body.email;
   var telephone = req.body.telephone;
@@ -54,7 +67,7 @@ router.post('/create', async(req, res)=>{
 
   var admin = {
     company_code:companyCode,
-    admin_id:adminId,
+    admin_id:'eb',
     admin_password:adminPassword,
     admin_name:adminName,
     email,
@@ -64,7 +77,7 @@ router.post('/create', async(req, res)=>{
     reg_date:'2023-12-28'
   }
   
-  await db.Article.create(admin)
+  await db.Admin.create(admin)
 
   res.redirect('/admin/list');
 })
@@ -73,7 +86,7 @@ router.get('/modify/:id', async(req, res)=>{
 
   var adminIdx = req.params.id;
 
-  var admin = await db.Admin.findOne({where:{admin_id:adminIdx}});
+  var admin = await db.Admin.findOne({where:{admin_member_id:adminIdx}});
 
   res.render('admin/modify.ejs', {admin});
 });

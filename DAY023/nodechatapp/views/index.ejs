@@ -1,0 +1,98 @@
+<!-- 오른쪽 로그인창 -->
+<div class="login-wrapper">
+    <div class="login-screen">
+      <!-- Bootstrap Modal for Error Messages -->
+      <% if (error) { %>
+      <div
+        class="modal fade"
+        id="errorModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLabel"><%= error %></h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">Email or Password is wrong.</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+  
+      <div class="login-body" id = entryTypeForm>
+        <a href="/chat" class="login-logo">
+          <img src="img/logo.svg" alt="Quick Chat" />
+        </a>
+        <h6>Welcome back,<br />Please login to your account.</h6>
+        <form action="/" method="post">
+          <div class="field-wrapper">
+            <input type="email" name="id" id="id" autofocus/>
+            <div class="field-placeholder">Email ID</div>
+          </div>
+          <div class="field-wrapper mb-3">
+            <input type="password" name="password" id="pwd" />
+            <div class="field-placeholder">Password</div>
+          </div>
+          <div class="actions">
+            <a href="/forgot-password">Forgot password?</a>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+        </form>
+      </div>
+      <div class="login-footer">
+        <span class="additional-link"
+          >No Account?
+          <a href="/signup" class="btn btn-secondary">Sign Up</a>
+        </span>
+      </div>
+    </div>
+  </div>
+  
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+  <script>
+    // <% if (error) { %>
+    //   $(document).ready(function() {
+    //     $('#errorModal').modal('show');
+    //   });
+    // <% } %>
+  
+    $(document).ready(function(){
+      $("#id").focus();
+    })
+  
+    $("#entryTypeForm").submit(function(){
+      if($("#id").val() == ""){
+        alert("Type in your e-mail account.");
+        id.focus();
+        return false;
+      }
+  
+      if ($("#pwd").val() == ""){
+        alert("Type in your password.");
+        pwd.focus();
+        return false;
+      }
+    })
+    
+  </script>

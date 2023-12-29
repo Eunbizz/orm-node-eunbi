@@ -73,16 +73,30 @@
                                             </tr>
                                         </thead>
                                         <tbody class="hoverTblBody">
+                                            <% for(var i =0;i<channel.length;i++){ %>
 
                                             <tr>
-                                                <td><a href="/channel/modify/<%=channel_list.channel_id%>">1</a></td>
-                                                <td>잡담</a></td>
-                                                <td>hi</td>
-                                                <td>hello</td>
-                                                <td>100</td>
-                                                <td>이용중</td>
-                                                <td>eb</td>
+                                                <td><a href="/channel/modify/<%=channel[i].channel_id%>"><%=channel[i].channel_id%></a></td>
+                                                <td>
+                                                    <% if(channel[i].category_code == 1){%>
+                                                        공지
+                                                    <%} else {%>
+                                                        잡담
+                                                    <%}%>
+                                                </td>
+                                                <td><%=channel[i].channel_name%></td>
+                                                <td><%=channel[i].channel_desc%></td>
+                                                <td><%=channel[i].user_limit%></td>
+                                                <td>
+                                                    <% if(channel[i].channel_state_code == 1){%>
+                                                        사용중
+                                                    <%} else {%>
+                                                        사용안함
+                                                    <%}%>
+                                                </td>
+                                                <td><%=channel[i].reg_member_id%></td>
                                             </tr>
+                                        <% } %>
 
                                         </tbody>
                                     </table>
