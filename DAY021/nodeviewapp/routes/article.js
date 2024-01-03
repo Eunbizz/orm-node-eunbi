@@ -6,6 +6,8 @@ var router = express.Router();
 
 var db = require('../models/index.js');
 const Op = db.Sequelize.Op;
+var sequelize = db.sequelize;
+const {QueryTypes} = sequelize;
 
 // 게시글 목록 조회 웹페이지 요청 및 응답 라우팅메소드
 // localhost:3000/article/list
@@ -21,19 +23,36 @@ router.get('/list', async(req, res)=>{
     // db.Article.findAll() 메소드는 article 테이블에 모든 데이터를 조회
     // SELECT * FROM article();
     // SELECT article,,, FROM article WHERE is_display_code=1 AND view_count!=0;
-    var articles = await db.Article.findAll(
-        {
-            attributes: ['article_id','board_type_code','title','article_type_code','view_count','is_display_code','reg_date','reg_member_id'],
-            // where:{
-            //     is_display_code:1,
-            //     view_count: {[Op.not]:0}},
-            order: [['article_id','DESC']] //DESC 오름차순, ASC 내림차순
-        }
+    // var articles = await db.Article.findAll(
+    //     {
+    //         attributes: ['article_id','board_type_code','title','article_type_code','view_count','is_display_code','reg_date','reg_member_id'],
+    //         // where:{
+    //         //     is_display_code:1,
+    //         //     view_count: {[Op.not]:0}},
+    //         order: [['article_id','DESC']] //DESC 오름차순, ASC 내림차순
+    //     }
 
-    );
+    // );
+
+    // var sqlQuery = `SELECT article_id,board_type_code,title,article_type_code,view_count,ip_address,is_display_code,reg_date,reg_member_id
+    //                 FROM article
+    //                 WHERE is_display_code = 1
+    //                 ORDER BY article_id DESC;`
+    
+    // var articles = await sequelize.query(sqlQuery,{
+    //     raw:true,
+    //     type:QueryTypes.SELECT
+    // });
+
+    var articles = await sequelize.query("CALL SP_CHAT_ARTICLE_DISPLAY (:P_DISPLAY_CODE)",
+        { replacements: { P_DISPLAY_CODE: 1 } }
+        );
+    
+    // Select Count(*) From article 
+    var articleCount = await db.Article.count();
 
     // step2: 게시글 전체 목록을 list.ejs 뷰에 전달
-    res.render('article/list.ejs', {articles,searchOption});
+    res.render('article/list.ejs', {articles,searchOption,articleCount});
 });
 
 // 게시글 목록에서 조회 옵션 데이터를 전달받아 게시글 목록 조회 후
@@ -129,6 +148,9 @@ router.get('/modify/:aid', async(req, res)=>{
 
     // step 2: 해당 게시글 번호에 해당하는 단일 게시글 정보를 DB article 테이블에서 조회해온다.
     var article = await db.Article.findOne({where:{article_id:articleIdx}});
+
+    // 단일 게시글에 동적 속성 기반 댓글 목록 속성 추가
+    article.comments = [{comment_id:1,comment:'댓글1입니당.'},{comment_id:2,comment:'댓글2입니당.'}];
 
     // step 3: 단일 게시글 정보로 뷰에 전달한다.
     res.render('article/modify.ejs', {article});
