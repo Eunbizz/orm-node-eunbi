@@ -1,0 +1,109 @@
+
+            <!--우측 상단 헤더 영역 -->
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>메시지 목록</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="/">Home ></a>
+                        </li>
+                        <li>
+                            <a>메시지 목록 ></a>
+                        </li>
+                        <li class="active">
+                            <strong>조회</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <!--우측 콘텐츠 영역 -->
+            <div class="wrapper wrapper-content">
+                
+                <!-- 사용자 정보 조회 옵션 및 조회 영역 -->
+                <form action="/message/list" method="post">
+                    <div class="ibox-content m-b-sm border-bottom">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="OrderNo">채널</label>
+                                    <input type="text" name="channelId" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="OrderName">채널이름</label>
+                                    <input type="text" name="title" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="MobileNo">등록아이디</label>
+                                    <input type="text" name="register" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">조회</button>
+                            <a href="/message/create" class="btn btn-info">신규</a>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- 사용자 정보 조회 결과 목록 -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <div class="table-responsive">
+
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="10%">순번</th>
+                                                <th width="10%">분류</th>
+                                                <th width="20%">채널명</th>
+                                                <th width="20%">채널간략소개</th>
+                                                <th width="10%">동시채널접속자수</th>
+                                                <th width="10%">채널오픈상태</th>
+                                                <th width="20%">등록아이디</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="hoverTblBody">
+
+                                            <tr>
+                                                <td><a href="/message/modify/<%=message_list.message_id%>">1</a></td>
+                                                <td>잡담</a></td>
+                                                <td>hi</td>
+                                                <td>hello</td>
+                                                <td>100</td>
+                                                <td>이용중</td>
+                                                <td>eb</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+    <script>
+
+    </script>
+
+
+</body>
+
+</html>

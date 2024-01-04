@@ -1,0 +1,115 @@
+
+            <!--우측 상단 헤더 영역 -->
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>관리자 정보 관리</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="/">Home ></a>
+                        </li>
+                        <li>
+                            <a>관리자 정보 관리 ></a>
+                        </li>
+                        <li class="active">
+                            <strong>조회</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <!--우측 콘텐츠 영역 -->
+            <div class="wrapper wrapper-content">
+                
+                <!-- 사용자 정보 조회 옵션 및 조회 영역 -->
+                <form action="/admin/list" method="post">
+                    <div class="ibox-content m-b-sm border-bottom">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="OrderNo">부서명</label>
+                                    <input type="text" name="deptName" class="form-control">
+                                    
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="OrderName">이름</label>
+                                    <input type="text" name="name" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="MobileNo">전화번호</label>
+                                    <input type="text" name="telephone" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">조회</button>
+                            <a href="/admin/create" class="btn btn-info">신규</a>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- 사용자 정보 조회 결과 목록 -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <div class="table-responsive">
+
+                                    <table id="grid-basic" class="table table-condensed table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th data-column-id="admin_member_id" width="10%">순번</th>
+                                                <th data-column-id="dept_name" width="10%">부서명</th>
+                                                <th data-column-id="admin_name" width="20%">이름</th>
+                                                <th data-column-id="telephone" width="20%">전화번호</th>
+                                                <th data-column-id="admin_id" width="10%">아이디</th>
+                                                <th data-column-id="used_yn_code" width="10%">사용상태</th>
+                                                <th data-column-id="reg_date" width="20%">등록일</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="hoverTblBody">
+                                            <% for(var i =0;i<admins.length;i++){ %>
+
+                                            <td><a href="/admin/modify/<%=admins[i].admin_member_id%>"><%=admins[i].admin_member_id%></a></td>
+                                            <td><%=admins[i].dept_name%></td>
+                                            <td><%=admins[i].admin_name%></td>
+                                            <td><%=admins[i].telephone%></td>
+                                            <td><%=admins[i].admin_id%></td>
+                                            <td>
+                                                <% if(admins[i].used_yn_code == 1){%>
+                                                사용중
+                                                <%} else{%>
+                                                사용안함
+                                                <%}%>
+                                            </td>
+                                            <td><%=moment(admins[i].reg_date).format('YYYY-MM-DD HH:mm')%></td>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <script>
+                $("#grid-basic").bootgrid();
+             </script>
+
+
+</body>
+
+</html>
