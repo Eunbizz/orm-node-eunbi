@@ -144,5 +144,6 @@ router.get('/delete', async(req, res)=>{
   res.redirect('/member/list')
 })
 
+router.get('/')
 
 module.exports = router;

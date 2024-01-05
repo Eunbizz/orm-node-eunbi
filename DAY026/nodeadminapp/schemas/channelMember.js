@@ -4,6 +4,11 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 const{Schema} = mongoose;
 
 const channelMemberSchema = new Schema({
+    member_id: {
+        type:Number,
+        required: true,
+        ref:'Member'
+    },
     nick_name: {
         type:Number,
         required: true
