@@ -1,0 +1,91 @@
+	<!-- 회원가입 세션 -->
+	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+		<div class="login-wrapper">
+			<form action="/entry" method="post">
+				<div class="login-screen">
+					<div class="login-body">
+						<a href="/" class="login-logo">
+							<img src="img/logo.svg" alt="Quick Chat">
+						</a>
+						<h6>Hola to you,<br>Create your account.</h6>
+						<div class="field-wrapper mb-3 d-flex">
+							<div class="field-placeholder">Email ID</div>
+							<input type="email" name="email" id="email" class="form-control" autofocus autocomplete="email">
+							<button type="button" id="checkEmail" class="btn btn-secondary ml-2">Check</button>
+						</div>
+						<div class="field-wrapper mb-3">
+							<input type="text" name="name" id="name" autocomplete="name">
+							<div class="field-placeholder">Name</div>
+						</div>
+						<div class="field-wrapper mb-3">
+							<input type="password" name="password" id="password" >
+							<div class="field-placeholder">Password</div>
+						</div>
+						<div class="field-wrapper mb-3">
+							<input type="password" name="confirm_password" id="confirm_password">
+							<div class="field-placeholder">Confirm Password</div>
+						</div>
+						<div class="field-wrapper mb-3">
+							<select name="country_code" id="country_code">
+								<option value="">Choose</option>
+								<option value="KR">Korea</option>
+								<option value="US">United States</option>
+								<option value="UK">United Kingdom</option>
+								<option value="JP">Japan</option>
+							</select>
+							<div class="field-placeholder">Country</div>
+						</div>
+						<div class="field-wrapper mb-3">
+							<input type="tel" name="telephone" id="telephone">
+							<div class="field-placeholder">Phone</div>
+						</div>
+						<div class="field-wrapper mb-3">
+							<input type="date" name="birthDate" id="birthDate">
+							<div class="field-placeholder">Birthday</div>
+						</div>
+						<div class="field-wrapper mb-3">
+							<input type="file" name="profileImgPath" id="profileImgPath">
+							<div class="field-placeholder">Profile Image
+						</div>
+
+					</div>
+					<div class="login-footer">
+						<span class="additional-link">Have an account? <a href="/login" class="btn btn-secondary">Login</a></span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+<script>
+	$(document).ready(function(){
+
+	});
+
+	$("#entryForm").submit(function(){
+		if($("#email").val()==""){
+			alert("메일주소를 입력해주세요.");
+			$("#email").focus();
+			return false
+		}
+		if($("#password").val()==""){
+			alert("암호를 입력해주세요.");
+			$("#password").focus();
+			return false
+		}
+		if($("#confirmPassword").val()==""){
+			alert("암호 재확인 값을 입력해주세요.");
+			$("#confirmPassword").focus();
+			return false
+		}
+		if($("#password").val()!=$("#confirmPassword").val()){
+			alert("암호값이 일치하지 않습니다.");
+			$("#password").val("");
+			$("#confirmPassword").val("");
+			$("#password").focus();
+			return false
+		}
+	})
+
+
+</script>
