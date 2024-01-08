@@ -31,8 +31,6 @@ mongoose.connection.on('disconnected', () => {
 //회원정보 콜렉션 모델을 참조합니다.
 require('./member.js');
 
-// require('./admin.js');
-
-// require('./channelMember.js');
+require('./channel.js');
 
 module.exports = connect;
