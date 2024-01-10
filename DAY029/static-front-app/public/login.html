@@ -46,7 +46,7 @@
 							<span>Simple.</span>
 						</div>
 						<div class="about-desc">
-							Quick Chat is an intelligent and communications tool, built for teams. It provides an integrated platform that makes team communication easy and efficient.
+							Quick Chat is an intelligent and communications tool, built for teams. It provides an integrated platform that makes team communication easy and efficient. 
 						</div>
 						<a href="index.html" class="know-more">Know More <img src="img/right-arrow.svg"></a>
 
@@ -54,31 +54,29 @@
 				</div>
 				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
 					<div class="login-wrapper">
-						<form action="index.html">
+
+						<form id="loginForm">
 							<div class="login-screen">
 								<div class="login-body">
 									<a href="index.html" class="login-logo">
 										<img src="img/logo.svg" alt="Quick Chat">
 									</a>
-									<h6>Welcome to Quick Chat App,<br>Create your account.</h6>
+									<h6>Welcome back,<br>Please login to your account.</h6>
 									<div class="field-wrapper">
-										<input type="email" autofocus>
+										<input type="email" id="email" autofocus>
 										<div class="field-placeholder">Email ID</div>
 									</div>
-									<div class="field-wrapper">
-										<input type="password">
+									<div class="field-wrapper mb-3">
+										<input type="password" id="password">
 										<div class="field-placeholder">Password</div>
 									</div>
-									<div class="field-wrapper mb-3">
-										<input type="password">
-										<div class="field-placeholder">Confirm Password</div>
-									</div>
 									<div class="actions">
-										<button type="submit" class="btn btn-primary ml-auto">Sign Up</button>
+										<a href="forgot-password.html">Forgot password?</a>
+										<button type="submit" class="btn btn-primary">Login</button>
 									</div>
 								</div>
 								<div class="login-footer">
-									<span class="additional-link">Have an account? <a href="login.html" class="btn btn-secondary">Login</a></span>
+									<span class="additional-link">No Account? <a href="signup.html" class="btn btn-secondary">Sign Up</a></span>
 								</div>
 							</div>
 						</form>
@@ -88,9 +86,55 @@
 			<!-- Row end -->
 
 		</div>
-		<!-- *************
-			************ Login container end *************
-		************* -->
+
+		<script src="js/jquery.min.js"></script>
+
+		<script>
+			$("#loginForm").submit(function(){
+				if ($("#email").val() == ""){
+					alert('메일주소를 입력해주세요.')
+					$("#email").focus();
+					return false;
+				};
+
+			var member = {
+				"email":$("#email").val(),
+				"password":$("#password").val(),
+			}
+
+				//백엔드의 로그인 RESTFul API를 호출해 로그인 처리합니다.
+			$.ajax({
+				url:"http://localhost:3000/api/member/login",
+				type:"POST",
+				data:member,
+				success:function(result){
+					console.log("회원로그인 결과값 확인:",result);
+
+					if(result.code == 200){
+						location.href= "/";
+					}else if(result.code == 400){
+
+						if(result.msg == "NotExistEmail"){
+							alert("동일한 메일주소가 존재하지 않습니다.");
+							return false;
+						}
+
+						if(result.msg == "NotCorrectword"){
+							alert("암호가 존재하지 않습니다.");
+							return false;
+						}
+
+					}else{
+						alert("로그인을 실패헀습니다.");
+					}
+
+				}
+			});
+
+
+				return false
+			});
+		</script>
 
 	</body>
 </html>
