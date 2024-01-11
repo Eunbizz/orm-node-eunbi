@@ -5,6 +5,27 @@
 var express = require('express');
 var router = express.Router();
 
+var moment = require('moment');
+
+// multer 멀티 업로드 패키지 참조
+var multer = require('multer');
+
+//일반 업로드처리 객체 생성
+var simpleUpload = multer({ storage: storage });
+
+// s3 전용 업로드 객체 참조
+var {upload} = require('../common/aws_s3')
+
+//파일저장위치 지정
+var storage  = multer.diskStorage({ 
+  destination(req, file, cb) {
+    cb(null, 'public/upload/');},
+  filename(req, file, cb) {
+    cb(null, `${moment(Date.now()).format('YYYYMMDDHHMMss')}__${file.originalname}`);},
+});
+
+
+
 //전체 게시글 목록 데이터 조회 반환 API 라우팅 메소드 
 //http://localhost:3000/api/article/all
 router.get('/all',async(req,res)=>{
@@ -203,6 +224,71 @@ router.post('/update',async(req,res)=>{
     res.json(apiResult);
 });
 
+// 단일 파일업로드 처리 Restful API 라우팅메소드
+// 게시글 파일 업로드 전용 restful api
+//http://localhost:3000/api/article/upload
+router.post('/upload', simpleUpload.single('file'), async(req, res)=>{
+
+    //API라우팅 메소드 반환형식 정의 
+    var apiResult = {
+        code:200,
+        data:null,
+        result:""
+    };
+
+    try{
+        const uploadFile = req.file;
+
+        var filePath ="/upload/"+uploadFile.filename; // 서버에 실제 업로드된 물리적 파일명-도메인 주소가 생략된 파일링크주소
+        var fileName = uploadFile.filename; // 서버에 저장된 실제 물리파일명(파일명/확장자포함)
+        var fileOrignalName = uploadFile.originalname; // 클라이언트에서 선택한 오리지널 파일명
+        var fileSize = uploadFile.size; // 파일 크기(KB)
+        var fileType=uploadFile.mimetype; // 파일 포맷
+
+        apiResult.code = 200;
+        apiResult.data = ({filePath,fileName,fileOrignalName,fileSize,fileType});
+        apiResult.result = "Ok";
+    }catch(err){
+        apiResult.code = 500;
+        apiResult.data = [];
+        apiResult.result = "Failed";
+
+    }
+    res.json(apiResult);
+})
+
+// 단일 파일업로드 처리 Restful API 라우팅메소드
+// 게시글 파일 업로드 전용 restful api
+//http://localhost:3000/api/article/uploadS3
+router.post('/uploadS3', upload.getUpload('/').fields([{ name: 'file', maxCount: 1 }]), async(req, res)=>{
+
+    //API라우팅 메소드 반환형식 정의 
+    var apiResult = {
+        code:200,
+        data:null,
+        result:""
+    };
+
+    try{
+        const uploadFile = req.files.file[0];
+
+        var filePath ="/upload/"+uploadFile.filename; // 서버에 실제 업로드된 물리적 파일명-도메인 주소가 생략된 파일링크주소
+        var fileName = uploadFile.filename; // 서버에 저장된 실제 물리파일명(파일명/확장자포함)
+        var fileOrignalName = uploadFile.originalname; // 클라이언트에서 선택한 오리지널 파일명
+        var fileSize = uploadFile.size; // 파일 크기(KB)
+        var fileType=uploadFile.mimetype; // 파일 포맷
+
+        apiResult.code = 200;
+        apiResult.data = ({filePath,fileName,fileOrignalName,fileSize,fileType});
+        apiResult.result = "Ok";
+    }catch(err){
+        apiResult.code = 500;
+        apiResult.data = [];
+        apiResult.result = "Failed";
+
+    }
+    res.json(apiResult);
+})
 
 //단일 게시글 데이터 조회 반환 API 라우팅 메소드 
 //http://localhost:3000/api/article/1

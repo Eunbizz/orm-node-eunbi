@@ -1,6 +1,22 @@
 var express = require('express');
 var router = express.Router();
 
+// multer 멀티 업로드 패키지 참조
+var multer = require('multer');
+
+//파일저장위치 지정
+var storage  = multer.diskStorage({ 
+  destination(req, file, cb) {
+    cb(null, 'public/upload/');
+  },
+  filename(req, file, cb) {
+    cb(null, `${moment(Date.now()).format('YYYYMMDDHHMMss')}__${file.originalname}`);
+  },
+});
+
+//일반 업로드처리 객체 생성
+var upload = multer({ storage: storage });
+
 var bcrypt = require('bcryptjs');
 
 var db = require('../models/index');
@@ -8,6 +24,7 @@ var Op = db.Sequelize.Op;
 
 var sequelize = db.sequelize;
 const{ QueryTypes } = sequelize;
+
 
 /* 
 기능: 관리자 웹사이트 메인페이지 요청과 응답처리 라우팅 메소드 
