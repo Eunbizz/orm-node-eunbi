@@ -63,10 +63,11 @@ router.post('/create', async(req, res)=>{
   // step1: 사용자가 입력한 게시글 등록 데이터 추출
   var companyCode = req.body.companyCode;
   var adminPassword = req.body.adminPassword;
-  var email = req.body.email;
   var telephone = req.body.telephone;
   var deptName = req.body.deptName;
   var adminName = req.body.adminName;
+  var adminId = req.body.adminId;
+  var email = req.body.email;
 
   // 관리자 암호를 해시알고리즘 기반 단방향 암호화 적용하기
   // bcrypt.hash('암호화할문자', 암호화변환횟수)
@@ -75,7 +76,7 @@ router.post('/create', async(req, res)=>{
   // step2: 추출된 데이터를 기반으로 DB 입력 객체  생성
   var admin = {
     company_code:companyCode,
-    admin_id:'eb',
+    admin_id:adminId,
     admin_password:encryptedPassword,
     admin_name:adminName,
     email,
