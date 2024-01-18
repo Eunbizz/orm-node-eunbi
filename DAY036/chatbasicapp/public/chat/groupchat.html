@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>그룹 채팅하기-채팅방</title>
+    </head>
+
+    <body>
+        <h1>그룹채팅 사용자간 채팅하기</h1>
+        <p>그룹채팅은 step1: 채팅방 입장 step2: 입장 후 메시지 발송하기</p>
+        채팅방명(채널명):<input type="text" id="channel" value="채널1"/><br/>
+        <button id="btnEntry">입장하기</button><br/>
+
+        <hr>
+
+        대화명:<input type="text" id="nickName" value="은비"/><br/>
+        메시지:<input type="text" id="message"/><br/>
+        <button id="btnSend">전송</button>
+
+        <hr>
+        대화이력보기
+        <ul id="chatHistory">
+
+
+        </ul>
+
+
+        <!-- jquery cdn 라이브러리 참조  -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- socket.io javascript library 참조  -->
+        <script src="/socket.io/socket.io.js"></script>
+
+        <!-- 개발자 정의 소켓 통신 기능 구현 -->
+        <script>
+            // 1. socket.io.js에 제공하는 io 객체를 이용해 서버소켓(socket.js)와 연결
+            // io.connect('서버소켓연결경로주소:http://localhost:3000/')
+            // io.coonect()메소드를 통해 현재 웹브라우저 웹페이지와 서버소켓과 연결을 시도
+            // 서버에서 io.on("connection", async(socket)=>{ 실행됨
+            var socket = io.connect('/');
+
+            // 채팅방 입장하기 기능구현
+            $("#btnEntry").click(function(){
+
+                // 채팅방명 조회하기
+                var channelId = $("#channel").val();
+                var nickName = $("#nickName").val();
+
+                // 채팅방 입장처리 서버소켓 이벤트 호출
+                socket.emit('entry', channelId, nickName);
+
+            });
+
+            // 전송버튼이 클릭되면 메시지를 서버소켓으로 전송
+            $("#btnSend").click(function(){
+
+                // 1. 닉네임값을 추출
+                var nickName = $("#nickName").val();
+
+                // 2. 사용자 입력 메시지값 추출
+                var message = $("#message").val();
+
+                var msgData = `${nickName}:${message}`;
+
+                var groupMsg = {
+                    channelId:$("#channel").val(),
+                    nickName,
+                    message
+                };
+
+                // 3. 현재 연결된 서버소켓으로 메시지를 전송
+                // socket.emit('서버소켓메시지이벤트 수신기명', 전달할데이터);
+                socket.emit('groupmsg', groupMsg);
+                // socket.emit('test', msgData);
+
+            });
+
+
+            // 서버소켓(socket.js)에서 보내주는 클라이언트 이벤트 수신기들 기능정의
+            socket.on('receiveAll', function(msgData){
+                console.log('서버소켓에서 보내준 메시지: ', msgData);
+                // 도착한 메시지 문자열을 ul 태그에 li 태그형식으로 추가
+                $("#chatHistory").append(`<li>${msgData}</li>`);
+            });
+
+            // 서버소켓(socket.js)에서 보내주는 클라이언트 이벤트 수신기들 기능정의
+            socket.on('receiveTest', function(msgData){
+                console.log('서버소켓에서 보내준 메시지: ', msgData);
+                // 도착한 메시지 문자열을 ul 태그에 li 태그형식으로 추가
+                $("#chatHistory").append(`<li>${msgData}</li>`);
+            });
+
+            // 채팅방 입장결과 메시지 수신기 정의 및 기능구현
+            socket.on('entryok', function(msgData){
+                console.log('서버소켓에서 보내준 메시지: ', msgData);
+                // 도착한 메시지 문자열을 ul 태그에 li 태그형식으로 추가
+                $("#chatHistory").append(`<li>${msgData}</li>`);
+            });
+
+            // 채팅방 기준 서버에서 보내준 메시지 이벤트 수신기 정의 및 기능구현
+            socket.on('receiveGroupMsg', function(msgData){
+                console.log('서버소켓에서 보내준 메시지: ', msgData);
+                // 도착한 메시지 문자열을 ul 태그에 li 태그형식으로 추가
+                $("#chatHistory").append(`<li>${msgData}</li>`);
+            });
+
+
+
+        </script>
+
+
+    </body>
+</html>

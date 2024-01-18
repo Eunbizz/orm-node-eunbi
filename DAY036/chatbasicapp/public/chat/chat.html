@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>모든 사용자간 채팅하기</title>
+    </head>
+
+    <body>
+        <h1>서버소켓과 연결된 모든 사용자간 채팅하기</h1>
+        대화명:<input type="text" id="nickName"/><br/>
+        메시지:<input type="text" id="message"/><br/>
+        <button id="btnSend">전송</button>
+
+        <hr>
+        대화이력보기
+        <ul id="chatHistory">
+
+
+        </ul>
+
+
+        <!-- jquery cdn 라이브러리 참조  -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- socket.io javascript library 참조  -->
+        <!-- <script src="http://localhost:3000/socket.io/socket.io.js"></script> -->
+        
+        <!-- socket.js JQuery 기반 클라이언트 CDN 라이브러리 참조  -->
+        <script src="https://cdn.socket.io/4.4.1/socket.io.min.js" crossorigin="anonymous"></script>
+
+        
+        <!-- 개발자 정의 소켓 통신 기능 구현 -->
+        <script>
+            // 1. socket.io.js에 제공하는 io 객체를 이용해 서버소켓(socket.js)와 연결
+            // io.connect('서버소켓연결경로주소:http://localhost:3000/')
+            // io.coonect()메소드를 통해 현재 웹브라우저 웹페이지와 서버소켓과 연결을 시도
+            // 서버에서 io.on("connection", async(socket)=>{ 실행됨
+            var socket = io.connect('http://localhost:3000/');
+
+            // 전송버튼이 클릭되면 메시지를 서버소켓으로 전송
+            $("#btnSend").click(function(){
+
+                // 1. 닉네임값을 추출
+                var nickName = $("#nickName").val();
+
+                // 2. 사용자 입력 메시지값 추출
+                var message = $("#message").val();
+
+                var msgData = `${nickName}:${message}`;
+
+                // 3. 현재 연결된 서버소켓으로 메시지를 전송
+                // socket.emit('서버소켓메시지이벤트 수신기명', 전달할데이터);
+                socket.emit('broadcast', msgData);
+                // socket.emit('test', msgData);
+
+            });
+
+
+            // 서버소켓(socket.js)에서 보내주는 클라이언트 이벤트 수신기들 기능정의
+            socket.on('receiveAll', function(msgData){
+                console.log('서버소켓에서 보내준 메시지: ', msgData);
+                // 도착한 메시지 문자열을 ul 태그에 li 태그형식으로 추가
+                $("#chatHistory").append(`<li>${msgData}</li>`);
+            });
+
+            // 서버소켓(socket.js)에서 보내주는 클라이언트 이벤트 수신기들 기능정의
+            socket.on('receiveTest', function(msgData){
+                console.log('서버소켓에서 보내준 메시지: ', msgData);
+                // 도착한 메시지 문자열을 ul 태그에 li 태그형식으로 추가
+                $("#chatHistory").append(`<li>${msgData}</li>`);
+            });
+
+
+
+
+        </script>
+
+
+    </body>
+</html>

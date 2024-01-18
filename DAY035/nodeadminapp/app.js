@@ -13,6 +13,22 @@ require('dotenv').config();
 
 // express 기반 서버세션 관리 패키지 참조
 var session = require('express-session');
+
+// 분산 서버 기반 세션 관리를 위한 redis 환경설정1
+const redis = require("redis");
+let RedisStore = require("connect-redis")(session);
+
+
+// 세션 저장을 위한 레디스 서버 연결정보 설정
+let redisClient = redis.createClient({
+  host: "127.0.0.1",
+  port: 6379,
+  db: 0,
+//  password: "gabriel070809!",
+});
+
+
+
 // 패스포트 패키지 참조
 const passport = require('passport');
 // 인증관련 패스포트 개발자 정의 모듈참조, 로컬로그인전략 적용
@@ -44,18 +60,33 @@ sequelize.sync();
 passportConfig(passport);
 
 //express-session기반 서버세션 설정 구성하기 
+// app.use(
+//   session({
+//     resave: false,//매번 세션 강제 저장-로그인시마다 세션구조/데이터 변경없이도 다시 저장여부 체크
+//     saveUninitialized: true, //빈 세션도 저장할지 여부. 기본 false
+//     secret: process.env.COKKIE_SECRET, //암호화할떄 사용하는 salt값
+//     cookie: {
+//       httpOnly: true,
+//       secure: false, //https 환경에서만 session 정보를 주고받도록 처리
+//       maxAge:1000 * 60 * 20 //20분동안 서버세션을 유지하겠다.(1000은 1초)
+//     },
+//   }),
+// );
+
 app.use(
   session({
-    resave: false,//매번 세션 강제 저장-로그인시마다 세션구조/데이터 변경없이도 다시 저장여부 체크
-    saveUninitialized: true, //빈 세션도 저장할지 여부. 기본 false
-    secret: process.env.COKKIE_SECRET, //암호화할떄 사용하는 salt값
+    store: new RedisStore ({ client: redisClient }),
+    saveUninitialized: true,
+    secret: "moiin",
+    resave: false,
     cookie: {
       httpOnly: true,
-      secure: false, //https 환경에서만 session 정보를 주고받도록 처리
-      maxAge:1000 * 60 * 20 //20분동안 서버세션을 유지하겠다.(1000은 1초)
-    },
-  }),
-);
+      secure: false,
+      //maxAge : 3600000, 세션유지 시간설정 : 1 시간
+  },
+  ttl : 250, //Redis DB 에서 세션정보가 사라지게 할지에 대한 만료시간설정
+  token:process.env.COOKIE_SECRET
+}));
 
 // 패스포트-세션 초기화: express-session 뒤에 설정
 app.use(passport.initialize());
