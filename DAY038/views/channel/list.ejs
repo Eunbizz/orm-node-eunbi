@@ -1,0 +1,127 @@
+
+            <!--우측 상단 헤더 영역 -->
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>채널 목록</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="/">Home ></a>
+                        </li>
+                        <li>
+                            <a>채널 목록 ></a>
+                        </li>
+                        <li class="active">
+                            <strong>조회</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <!--우측 콘텐츠 영역 -->
+            <div class="wrapper wrapper-content">
+                
+                <!-- 사용자 정보 조회 옵션 및 조회 영역 -->
+                <form action="/channel/list" method="post">
+                    <div class="ibox-content m-b-sm border-bottom">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="OrderNo">채널</label>
+                                    <select name="categoryCode" id="categoryCode" class="form-control">
+                                        <option value="0">선택</option>
+                                        <option value="1">공지채널</option>
+                                        <option value="2">잡담채널</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="OrderName">채널명</label>
+                                    <input type="text" name="channelName" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label class="control-label" for="MobileNo">등록아이디</label>
+                                    <input type="text" name="regMemberId" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">조회</button>
+                            <a href="/channel/create" class="btn btn-info">신규</a>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- 사용자 정보 조회 결과 목록 -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">
+                                <div class="table-responsive">
+
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="10%">순번</th>
+                                                <th width="10%">분류</th>
+                                                <th width="20%">채널명</th>
+                                                <th width="20%">채널간략소개</th>
+                                                <th width="10%">동시채널접속자수</th>
+                                                <th width="10%">채널오픈상태</th>
+                                                <th width="20%">등록아이디</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="hoverTblBody">
+                                            <% for(var i =0;i<channel.length;i++){ %>
+
+                                            <tr>
+                                                <td><a href="/channel/modify/<%=channel[i].channel_id%>"><%=channel[i].channel_id%></a></td>
+                                                <td>
+                                                    <% if(channel[i].category_code == 1){%>
+                                                        공지
+                                                    <%} else {%>
+                                                        잡담
+                                                    <%}%>
+                                                </td>
+                                                <td><%=channel[i].channel_name%></td>
+                                                <td><%=channel[i].channel_desc%></td>
+                                                <td><%=channel[i].user_limit%></td>
+                                                <td>
+                                                    <% if(channel[i].channel_state_code == 1){%>
+                                                        사용중
+                                                    <%} else {%>
+                                                        사용안함
+                                                    <%}%>
+                                                </td>
+                                                <td><%=channel[i].reg_member_id%></td>
+                                            </tr>
+                                        <% } %>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+    <script>
+
+    </script>
+
+
+</body>
+
+</html>

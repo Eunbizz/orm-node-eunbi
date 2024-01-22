@@ -1,0 +1,124 @@
+    <!--우측 상단 헤더 영역 -->
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>메시지 목록</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/">홈</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>메시지 목록</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <strong>신규등록</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!--우측 콘텐츠 영역 -->
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="ibox ">
+
+                    <!-- 왼쪽 선택박스 -->
+                    <div class="ibox-content mailbox-content">
+                        <div class="file-manager">
+                            <a class="btn btn-block btn-primary compose-mail" href="/message/create">신규 메시지</a>
+                            <div class="space-25"></div>
+                            <h5>Folders</h5>
+                            <ul class="folder-list m-b-md" style="padding: 0">
+                                <li><a href="/message/list"> <i class="fa fa-inbox "></i> 메시지목록 <span class="label label-warning float-right">16</span> </a></li>
+                                <li><a href="/message/create"> <i class="fa fa-envelope-o"></i> 신규메시지</a></li>
+                                <li><a href="/message/delete"> <i class="fa fa-trash-o"></i> 삭제</a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 animated fadeInRight">
+                <div class="mail-box-header">
+                    <h2>채팅메시지 생성</h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+                        <form action="/message/create" method="post">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">메시지유형</label>
+                                        <select name="msg_type_code" class="form-control" onclick="msgFile(this.value)">
+                                            <option value="3">일반메시지</option>
+                                            <option value="4">파일메시지</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">첨부파일</label>
+                                        <input type="file" class="form-control" id="msg_file" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">채널정보</label>
+                                        <select name="msg_state_code" id="msg_state_code" class="form-control">
+                                            <option value="0">퇴장</option>
+                                            <option value="1">입장</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12" style="display: flex; align-items: center; justify-content: space-between;">
+                                    <label class="col-form-label">메시지내용</label>
+                                    <textarea name="message" id="message" class="form-control" cols="50" rows="10" style="width: 90%;"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">작성자</label>
+                                        <input type="text" id="nick_name" name="nick_name" value="" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">IP주소</label>
+                                        <input type="text" id="ip_address" name="ip_address" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">등록일시</label>
+                                        <input type="date" id="msg_date" name="msg_date" value="2024-01-03" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" class="btn-white btn btn-x" value="저장">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+
+        function msgFile(value) {
+
+            var fileInput = document.getElementById('msg_file');
+
+            if (value == '4') {
+                fileInput.removeAttribute('disabled');
+            } else {
+                fileInput.setAttribute('disabled', 'disabled')
+            }
+        }
+    </script>

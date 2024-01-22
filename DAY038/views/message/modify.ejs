@@ -1,0 +1,133 @@
+    <!--우측 상단 헤더 영역 -->
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>메시지 수정</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/">홈</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>메시지 목록</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <strong>신규등록</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!--우측 콘텐츠 영역 -->
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="ibox ">
+
+                    <!-- 왼쪽 선택박스 -->
+                    <div class="ibox-content mailbox-content">
+                        <div class="file-manager">
+                            <a class="btn btn-block btn-primary compose-mail" href="/message/create">신규 메시지</a>
+                            <div class="space-25"></div>
+                            <h5>Folders</h5>
+                            <ul class="folder-list m-b-md" style="padding: 0">
+                                <li><a href="/message/list"> <i class="fa fa-inbox "></i> 메시지목록 <span class="label label-warning float-right">16</span> </a></li>
+                                <li><a href="/message/create"> <i class="fa fa-envelope-o"></i> 신규메시지</a></li>
+                                <li><a href="/message/delete"> <i class="fa fa-trash-o"></i> 삭제</a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10 animated fadeInRight">
+                <div class="mail-box-header">
+                    <h2>채팅메시지 수정</h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+                        <form action="/message/modify/<%=ChannelMessage.channel_msg_id%>" method="post">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">메시지유형</label>
+                                        <select name="msg_type_code" class="form-control" onclick="msgFile(this.value)">
+                                            <option value="3" <% if(ChannelMessage.msg_type_code =="3"){ %> selected <% } %>>일반메시지</option>
+                                            <option value="4" <% if(ChannelMessage.msg_type_code =="4"){ %> selected <% } %>>파일메시지</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">첨부파일</label>
+                                        <input type="file" class="form-control" id="msg_file" value="<%=ChannelMessage.msg_type_code%>" disabled/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">채널정보</label>
+                                        <select name="msg_state_code" id="msg_state_code" class="form-control">
+                                            <option value="0" <% if(ChannelMessage.msg_state_code =="0"){ %> selected <% } %>>퇴장</option>
+                                            <option value="1" <% if(ChannelMessage.msg_state_code =="1"){ %> selected <% } %>>입장</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12" style="display: flex; align-items: center; justify-content: space-between;">
+                                    <label class="col-form-label">메시지내용</label>
+                                    <textarea name="message" id="message" class="form-control" cols="50" rows="10" style="width: 90%;"><%=ChannelMessage.message%></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">작성자</label>
+                                        <input type="text" id="connection_id" name="connection_id" value="<%=ChannelMessage.connection_id%>" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">IP주소</label>
+                                        <input type="text" id="ip_address" name="ip_address" class="form-control" value="<%=ChannelMessage.ip_address%>">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label class="col-form-label">등록일시</label>
+                                        <input type="date" id="msg_date" name="msg_date" value="2024-01-03" class="form-control" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="text-align: center;">
+                                <input type="submit" class="btn btn-primary" value="수정">
+                                <a href="/message/list" class="btn btn-info">목록</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/js/inspinia.js"></script>
+    <script src="/js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="/js/plugins/iCheck/icheck.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+</body>
+
+</html>

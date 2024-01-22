@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "lee",
+      "password": "password123",
+      "email": "lee@gmail.com"
+    },
+    {
+      "id": 2,
+      "username": "user2",
+      "password": "pass456",
+      "email": "user2@example.com"
+    },
+    {
+      "id": 3,
+      "username": "user3",
+      "password": "mysecurepass",
+      "email": "user3@example.com"
+    },
+    {
+      "id": 4,
+      "username": "user4",
+      "password": "helloWorld",
+      "email": "user4@example.com"
+    },
+    {
+      "id": 6,
+      "password": "0000",
+      "username": "carlos",
+      "email": "carlos@gmail.com"
+    },
+    {
+      "id": 7,
+      "password": "0000",
+      "username": "juan",
+      "email": "juan@gmail.com"
+    },
+    {
+      "id": 8,
+      "password": "0000",
+      "username": "test",
+      "email": "test@main.com"
+    },
+    {
+      "id": 9,
+      "password": "0000",
+      "username": "5th person",
+      "email": "fifth@gmail.com"
+    }
+  ]
+}

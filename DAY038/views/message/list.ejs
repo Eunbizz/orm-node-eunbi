@@ -1,0 +1,129 @@
+    <!--우측 상단 헤더 영역 -->
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>메시지 목록</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/">홈</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a>메시지 목록</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <strong>목록</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+            
+    <!--우측 콘텐츠 영역 -->
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="ibox ">
+
+                    <!-- 왼쪽 선택박스 -->
+                    <div class="ibox-content mailbox-content">
+                        <div class="file-manager">
+                            <a class="btn btn-block btn-primary compose-mail" href="/message/create">신규 메시지</a>
+                            <div class="space-25"></div>
+                            <h5>Folders</h5>
+                            <ul class="folder-list m-b-md" style="padding: 0">
+                                <li><a href="/message/list"> <i class="fa fa-inbox "></i> 메시지목록 <span class="label label-warning float-right">10</span> </a></li>
+                                <li><a href="/message/create"> <i class="fa fa-envelope-o"></i> 신규메시지</a></li>
+                                <li><a href="/message/delete"> <i class="fa fa-trash-o"></i> 삭제</a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10 animated fadeInRight">
+            <div class="mail-box-header">
+
+                <form method="get" action="/" class="float-right mail-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" name="search" placeholder="Search email">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-sm btn-primary">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <h2>
+                    Inbox (10)
+                </h2>
+                <div class="mail-tools tooltip-demo m-t-md">
+                    <div class="btn-group float-right">
+                        <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                        <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+
+                    </div>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>
+
+                </div>
+            </div>
+                <div class="mail-box">
+
+                <table class="table table-hover table-mail">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th withd="5%">순번</th>
+                            <th withd="10%">메시지유형</th>
+                            <th withd="10%">채널정보</th>
+                            <th withd="15%">작성자</th>
+                            <th withd="35%">메시지내용</th>
+                            <th withd="10%">IP주소</th>
+                            <th withd="15%">등록일시</th>
+                            <th withd="5%">설정</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0; i < ChannelMessage.length; i++) { %>
+                        <tr style="text-align: center;">
+                            <td><%=ChannelMessage[i].channel_msg_id%></td>
+                            <td>
+                                <% if (ChannelMessage[i].msg_type_code == 3) { %>
+                                    일반메시지
+                                <% } else { %>
+                                    파일메시지
+                                <% } %>
+                            </td>
+                            <td>
+                                <% if(ChannelMessage[i].msg_state_code == 1) { %>
+                                    입장
+                                <% } else { %>
+                                    퇴장
+                                <% } %>
+                            </td>
+                            <td><%=ChannelMessage[i].nick_name%></td>
+                            <td><%=ChannelMessage[i].message%></td>
+                            <td><%=ChannelMessage[i].ip_address%></td>
+                            <td><%=ChannelMessage[i].msg_date%></td>
+                            <td>
+                                <a href="/message/modify/<%=ChannelMessage[i].channel_msg_id%>"><button class="btn-white btn btn-xs">수정</a>
+                                <!-- <a href="/message/delete">< class="btn-white btn btn-xs">삭제</    /a> -->
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>

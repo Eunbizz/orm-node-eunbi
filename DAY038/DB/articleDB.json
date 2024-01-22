@@ -1,0 +1,46 @@
+{
+    "articles" : [
+        {
+            "articleIdx":1,
+            "board_type":1,
+            "title":"오타니 9200억,,,",
+            "article_type":1,
+            "contents":"첫 번째 게시글 내용입니다.",
+            "view_cnt":100,
+            "ipAddress":"111.111.111.111",
+            "display":"Y",
+            "registDate":20231212,
+            "registUserIdx":1,
+            "editDate":1,
+            "editUserIdx":1
+        },
+        {
+            "articleIdx":2,
+            "board_type":2,
+            "title":"첫 번째 게시글입니다.",
+            "article_type":1,
+            "contents":"첫 번째 게시글 내용입니다.",
+            "view_cnt":100,
+            "ipAddress":"111.111.111.111",
+            "display":"Y",
+            "registDate":20231212,
+            "registUserIdx":1,
+            "editDate":1,
+            "editUserIdx":1
+        },
+        {
+            "articleIdx":3,
+            "board_type":3,
+            "title":"첫 번째 게시글입니다.",
+            "article_type":1,
+            "contents":"첫 번째 게시글 내용입니다.",
+            "view_cnt":100,
+            "ipAddress":"111.111.111.111",
+            "display":"Y",
+            "registDate":20231212,
+            "registUserIdx":1,
+            "editDate":1,
+            "editUserIdx":1
+        }
+    ]
+} 

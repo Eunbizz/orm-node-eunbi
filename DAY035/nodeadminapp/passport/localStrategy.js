@@ -3,13 +3,15 @@ var bcrypt = require('bcryptjs');
 const LocalStrategy = require('passport-local').Strategy;
 var db = require('../models/index.js');
 
+// app.js에서 passport 패키지 값을 받아와서 작동
 module.exports = passport =>{
     
     // passport.use('new LocalStrategy('로그인화면의 아이디/암호 UI 요소의 네임갑 설정',
     // 로그인처리함수정의(사용자가입력한아이디, 사용자가입력한암호, 후행콜백함수));
-    passport.use(new LocalStrategy({
-        usernameField:"id",
-        passwordField:"password"
+    passport.use(
+        new LocalStrategy({  // 생성자
+            usernameField:"id", // ejs의 input name="id"
+            passwordField:"password" 
     },async(adminId, adminPWD, done)=>{
         // 사용자가 입력한 아이디/암호를 기반으로 로그인 기능을 구현
         try{
