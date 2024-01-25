@@ -10,19 +10,25 @@ const bcrypt = require('bcryptjs');
 const AES = require('mysql-aes');
 const jwt = require('jsonwebtoken');
 
-router.get('/', function(req, res) {
-    const isLoggedIn = req.session && req.session.isLoggedIn;
-    res.render('index', { 
-    isLoggedIn: isLoggedIn 
-    });
+const passport = require('passport');
+
+const { isLoggedIn, isNotLoggedIn } = require('./passportMiddleware.js');
+
+
+router.get('/', isLoggedIn, async(req, res)=>{
+
+    // 패스포트 세션 기반 로그인 사용자 정보 추출하고 싶다면 이렇게
+    var admin_id = req.session.passport.user.admin_id;
+
+    res.render('index');
 });
 
 
-router.get('/login', async(req, res)=>{
-    res.render('login',{resultMsg:"", id:"", pw:"", layout:"loginLayout"});
+router.get('/login', isNotLoggedIn, async(req, res)=>{
+    res.render('login',{resultMsg:"", id:"", pw:"", layout:"loginLayout", loginError:req.flash('loginError')});
 });
 
-
+// express-session 기반
 router.post('/login', async(req, res)=>{
     
     try{
@@ -74,6 +80,38 @@ router.post('/login', async(req, res)=>{
         res.status(500).send('Internal Server Error');
         console.log(err)
     }
+
+});
+
+
+// passport 기반
+router.post('/passportlogin', async(req, res, next)=>{
+    // local 전략을 쓴다고 명시, passport/index.js에서 localStrategy를 찾아서 실행
+    passport.authenticate('local', (authError, admin, info) =>{
+
+        if (authError) {
+            console.error(authError);
+            return next(authError); // err handler로 던져버리기
+        }
+        if (!admin) { // false가 넘어오는 경우 (비번, 아이디 오류)
+            // redirect로 이동할 때 메시지를 같이 보내고 싶을 때
+            // connect-flash 설치 후 req.flash() 메서드 사용 가능
+            // req.flash(키, 값)
+            req.flash('loginError', info.message); // flash 객체를 통해 err 메시지 던져줌
+            return res.redirect('/login');
+        }
+        // 정상적인 로그인이 완료된 경우 req.login(세션저장데이터)
+        return req.login(admin, (loginError) =>{
+            if (loginError) {
+                console.error(loginError);
+                return next(loginError);
+            }
+            // 정상 로그인 시 메인페이지로 이동
+            return res.redirect('/');
+        })
+
+        
+    })(req, res, next);
 
 });
 
@@ -159,9 +197,17 @@ router.post('/register', async(req, res)=>{
     }
 });
 
-router.get('/logout', (req, res) => {
-    req.session.isLoggedIn = false; 
-    res.redirect('/login');
+// 동기 방식 로그아웃
+// 로그아웃과 세션 파기 작업이 완료된 후 리다이렉트 등의 동작을 하기 위해
+router.get('/logout', function(req, res, next){
+    req.logout(function(err){
+        if(err){
+            return next(err);
+        }
+        // 세선 파기
+        req.session.destroy();
+        res.redirect('/login');
+    });
 });
 
 module.exports = router;

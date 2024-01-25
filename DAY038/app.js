@@ -6,7 +6,17 @@ var logger = require('morgan');
 var expressLayouts = require('express-ejs-layouts');
 require('dotenv').config();
 const cors = require("cors");
+
+var flash = require('connect-flash');
+
 const session = require('express-session');
+const passport = require('passport');
+
+// 인증관련 패스포트 개발자 정의 모듈 참조, 로컬 로그인 전략 적용
+const passportConfig = require('./passport/index.js');
+
+// 패스포트 설정처리
+passportConfig(passport);
 
 var sequelize = require('./models/index.js').sequelize;
 
@@ -18,6 +28,9 @@ var messageRouter = require('./routes/message');
 var adminRouter = require('./routes/admin');
 
 var app = express();
+
+// flash 미들웨어 등록
+app.use(flash());
 
 sequelize.sync();
 
@@ -34,6 +47,10 @@ app.use(
     },
   }),
 );
+
+// 패스포트-세션 초기화
+app.use(passport.initialize());
+app.use(passport.session());  
 
 // 모든 RESTFUL 호출에 대한 응답 허락하기 - CORS ALL 허락..
 app.use(cors());

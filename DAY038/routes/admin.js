@@ -12,8 +12,10 @@ var Op = db.Sequelize.Op;
 const bcrypt = require('bcryptjs');
 const AES = require('mysql-aes');
 
+const { isLoggedIn, isNotLoggedIn } = require('./passportMiddleware.js');
 
-router.get('/list', async (req, res, next) => {
+
+router.get('/list', isLoggedIn, async (req, res, next) => {
   
   var admin = await db.Admin.findAll(
     {
